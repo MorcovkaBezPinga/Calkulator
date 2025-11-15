@@ -287,3 +287,311 @@ hr {
 small.form-text {
   font-size: 0.85rem !important;
 }
+
+/* ==================== THEME COLORS ==================== */
+
+/* DEFAULT THEME - Blue */
+body.theme-blue {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+body.theme-blue .calculator-wrapper {
+  border-top: 5px solid #3498db;
+}
+
+body.theme-blue .form-section {
+  border-left-color: #3498db;
+}
+
+body.theme-blue .form-section h3 {
+  color: #2c3e50;
+}
+
+body.theme-blue .title {
+  border-bottom-color: #3498db;
+}
+
+body.theme-blue .btn-primary {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+body.theme-blue .btn-primary:hover {
+  background: linear-gradient(135deg, #2980b9 0%, #1f618d 100%);
+  box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+}
+
+body.theme-blue .result-box {
+  border-color: #27ae60;
+}
+
+body.theme-blue .result-value {
+  color: #27ae60;
+}
+
+/* GREEN THEME */
+body.theme-green {
+  background: linear-gradient(135deg, #e8f5e9 0%, #81c784 100%);
+}
+
+body.theme-green .calculator-wrapper {
+  border-top: 5px solid #27ae60;
+  box-shadow: 0 10px 40px rgba(39, 174, 96, 0.15);
+}
+
+body.theme-green .form-section {
+  border-left-color: #27ae60;
+  background: #f1f8f5;
+}
+
+body.theme-green .title {
+  border-bottom-color: #27ae60;
+  color: #1b5e20;
+}
+
+body.theme-green .btn-primary {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+}
+
+body.theme-green .btn-primary:hover {
+  background: linear-gradient(135deg, #229954 0%, #186a3b 100%);
+  box-shadow: 0 5px 20px rgba(39, 174, 96, 0.4);
+}
+
+body.theme-green .result-box {
+  border-color: #27ae60;
+}
+
+/* PURPLE THEME */
+body.theme-purple {
+  background: linear-gradient(135deg, #f3e5f5 0%, #ce93d8 100%);
+}
+
+body.theme-purple .calculator-wrapper {
+  border-top: 5px solid #8e44ad;
+  box-shadow: 0 10px 40px rgba(142, 68, 173, 0.15);
+}
+
+body.theme-purple .form-section {
+  border-left-color: #8e44ad;
+  background: #faf0fc;
+}
+
+body.theme-purple .title {
+  border-bottom-color: #8e44ad;
+  color: #4a235a;
+}
+
+body.theme-purple .btn-primary {
+  background: linear-gradient(135deg, #8e44ad 0%, #7d3c98 100%);
+}
+
+body.theme-purple .btn-primary:hover {
+  background: linear-gradient(135deg, #7d3c98 0%, #6c3483 100%);
+  box-shadow: 0 5px 20px rgba(142, 68, 173, 0.4);
+}
+
+body.theme-purple .result-box {
+  border-color: #8e44ad;
+}
+
+body.theme-purple .result-value {
+  color: #8e44ad;
+}
+
+/* ORANGE THEME */
+body.theme-orange {
+  background: linear-gradient(135deg, #ffe0b2 0%, #ffb74d 100%);
+}
+
+body.theme-orange .calculator-wrapper {
+  border-top: 5px solid #e67e22;
+  box-shadow: 0 10px 40px rgba(230, 126, 34, 0.15);
+}
+
+body.theme-orange .form-section {
+  border-left-color: #e67e22;
+  background: #fff3e0;
+}
+
+body.theme-orange .title {
+  border-bottom-color: #e67e22;
+  color: #7f3c09;
+}
+
+body.theme-orange .btn-primary {
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+}
+
+body.theme-orange .btn-primary:hover {
+  background: linear-gradient(135deg, #d35400 0%, #ba4a00 100%);
+  box-shadow: 0 5px 20px rgba(230, 126, 34, 0.4);
+}
+
+body.theme-orange .result-box {
+  border-color: #e67e22;
+}
+
+body.theme-orange .result-value {
+  color: #e67e22;
+}
+
+/* RED THEME */
+body.theme-red {
+  background: linear-gradient(135deg, #ffebee 0%, #ef5350 100%);
+}
+
+body.theme-red .calculator-wrapper {
+  border-top: 5px solid #c0392b;
+  box-shadow: 0 10px 40px rgba(192, 57, 43, 0.15);
+}
+
+body.theme-red .form-section {
+  border-left-color: #c0392b;
+  background: #ffe0e0;
+}
+
+body.theme-red .title {
+  border-bottom-color: #c0392b;
+  color: #7b241c;
+}
+
+body.theme-red .btn-primary {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+}
+
+body.theme-red .btn-primary:hover {
+  background: linear-gradient(135deg, #a93226 0%, #922b21 100%);
+  box-shadow: 0 5px 20px rgba(192, 57, 43, 0.4);
+}
+
+body.theme-red .result-box {
+  border-color: #c0392b;
+}
+
+body.theme-red .result-value {
+  color: #c0392b;
+}
+
+/* TEAL THEME */
+body.theme-teal {
+  background: linear-gradient(135deg, #e0f2f1 0%, #4db8ac 100%);
+}
+
+body.theme-teal .calculator-wrapper {
+  border-top: 5px solid #16a085;
+  box-shadow: 0 10px 40px rgba(22, 160, 133, 0.15);
+}
+
+body.theme-teal .form-section {
+  border-left-color: #16a085;
+  background: #e0f2f1;
+}
+
+body.theme-teal .title {
+  border-bottom-color: #16a085;
+  color: #0d3b3b;
+}
+
+body.theme-teal .btn-primary {
+  background: linear-gradient(135deg, #16a085 0%, #138d75 100%);
+}
+
+body.theme-teal .btn-primary:hover {
+  background: linear-gradient(135deg, #138d75 0%, #117a65 100%);
+  box-shadow: 0 5px 20px rgba(22, 160, 133, 0.4);
+}
+
+body.theme-teal .result-box {
+  border-color: #16a085;
+}
+
+body.theme-teal .result-value {
+  color: #16a085;
+}
+
+/* DARK THEME */
+body.theme-dark {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+body.theme-dark .calculator-wrapper {
+  background: #1a252f;
+  border-top: 5px solid #3498db;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.theme-dark .form-section {
+  background: #253447;
+  border-left-color: #3498db;
+}
+
+body.theme-dark .form-section h3,
+body.theme-dark .title {
+  color: #ecf0f1;
+}
+
+body.theme-dark .title {
+  border-bottom-color: #3498db;
+}
+
+body.theme-dark .form-label {
+  color: #bdc3c7;
+}
+
+body.theme-dark .form-control,
+body.theme-dark .form-select {
+  background: #34495e;
+  color: #ecf0f1;
+  border-color: #3498db;
+}
+
+body.theme-dark .form-control::placeholder {
+  color: #7f8c8d;
+}
+
+body.theme-dark .btn-primary {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+body.theme-dark .result-box {
+  background: #253447;
+  border-color: #3498db;
+  color: #ecf0f1;
+}
+
+body.theme-dark .result-value {
+  color: #3498db;
+}
+
+body.theme-dark #calculationDetails {
+  color: #bdc3c7;
+}
+
+/* Color Toggle Button */
+#colorToggleBtn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+#colorToggleBtn:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* Smooth transitions for theme changes */
+body,
+.calculator-wrapper,
+.form-section,
+.form-control,
+.form-select,
+.btn,
+.title {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}

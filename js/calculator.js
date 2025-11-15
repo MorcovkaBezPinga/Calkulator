@@ -333,3 +333,51 @@ function showAlert(message, type = 'info') {
     // </div>`;
     // $(alertHtml).insertBefore('#calculatorForm');
 }
+
+// ==================== THEME MANAGEMENT ====================
+
+const THEMES = ['blue', 'green', 'purple', 'orange', 'red', 'teal', 'dark'];
+let currentThemeIndex = 0;
+
+function initializeTheme() {
+    // Завантажити збережену тему з localStorage
+    const savedTheme = localStorage.getItem('calculatorTheme') || 'theme-blue';
+    $('body').removeClass(THEMES.map(t => `theme-${t}`).join(' '));
+    $('body').addClass(savedTheme);
+    
+    // Встановити індекс поточної теми
+    const themeName = savedTheme.replace('theme-', '');
+    currentThemeIndex = THEMES.indexOf(themeName);
+}
+
+function changeTheme() {
+    // Перейти на наступну тему
+    currentThemeIndex = (currentThemeIndex + 1) % THEMES.length;
+    const newTheme = `theme-${THEMES[currentThemeIndex]}`;
+    
+    // Видалити всі класи тем
+    $('body').removeClass(THEMES.map(t => `theme-${t}`).join(' '));
+    
+    // Додати новий клас теми
+    $('body').addClass(newTheme);
+    
+    // Зберегти вибір у localStorage
+    localStorage.setItem('calculatorTheme', newTheme);
+}
+
+// ==================== EVENT LISTENERS FOR THEME ====================
+
+$(document).ready(function() {
+    // Ініціалізувати тему при завантаженні
+    initializeTheme();
+    
+    // Обробник кнопки зміни кольору
+    $('#colorToggleBtn').on('click', function() {
+        changeTheme();
+        // Додати невеликий ефект обертання
+        $(this).css('transform', 'rotate(360deg)').css('transition', 'transform 0.5s ease');
+        setTimeout(() => {
+            $(this).css('transform', 'rotate(0deg)');
+        }, 500);
+    });
+});
