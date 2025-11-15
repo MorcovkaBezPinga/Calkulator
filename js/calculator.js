@@ -1,99 +1,206 @@
-// ==================== CALCULATOR CONFIGURATION ====================
+// ==================== PRICING TABLES ====================
 
-// Формати паперу з розмірами в мм
-const FORMATS = {
-    'a6': { width: 105, height: 148, name: 'A6' },
-    'a5': { width: 148, height: 210, name: 'A5' },
-    'a4': { width: 210, height: 297, name: 'A4' },
-    'a3': { width: 297, height: 420, name: 'A3' },
-    'custom': { width: null, height: null, name: 'Власний розмір' }
+// Ціни для офсетного паперу 80г, формат A4/A3 (210x297мм та 297x420мм)
+const OFFSET_80_PRICES = {
+    '1-9': { '4+0': 17, '4+4': 25 },
+    '10-29': { '4+0': 14.62, '4+4': 21.5 },
+    '30-49': { '4+0': 12.75, '4+4': 18.75 },
+    '50-99': { '4+0': 10.88, '4+4': 16 },
+    '100-299': { '4+0': 9.35, '4+4': 13.75 },
+    '300-999': { '4+0': 8.16, '4+4': 12 },
+    '1000-2999': { '4+0': 7.31, '4+4': 10.75 },
+    '3000+': { '4+0': 5.78, '4+4': 8.5 }
 };
 
-// Базові ціни за площу паперу (вихідні ціни за м²)
-const BASE_PRICES = {
-    'offset80': 15,
-    'offset160': 25,
-    'offset300': 45,
-    'coated130': 35,
-    'coated200': 50,
-    'coated300': 70,
-    'designer_dali': 85,
-    'designer_gsk': 60,
-    'designer_stardream': 85,
-    'designer_flora': 100,
-    'designer_tintoretto': 90,
-    'designer_icelite': 95,
-    'designer_splendor': 88
+// Ціни для дизайнерського паперу 297х420мм
+const DESIGNER_297x420_PRICES = {
+    'Dali candido, 285 г/м': {
+        '1': 110,
+        '2-4': 100,
+        '5-14': 95,
+        '15-24': 90,
+        '25+': 85
+    },
+    'Dali neve, 285 г/м': {
+        '1': 110,
+        '2-4': 100,
+        '5-14': 95,
+        '15-24': 90,
+        '25+': 85
+    },
+    'Stardream crystal, 285 г/м': {
+        '1': 120,
+        '2-4': 109.1,
+        '5-14': 103.64,
+        '15-24': 98.18,
+        '25+': 92.73
+    },
+    'Stardream diamond, 285 г/м': {
+        '1': 120,
+        '2-4': 109.1,
+        '5-14': 103.64,
+        '15-24': 98.18,
+        '25+': 92.73
+    },
+    'Stardream opal, 285 г/м': {
+        '1': 120,
+        '2-4': 109.1,
+        '5-14': 103.64,
+        '15-24': 98.18,
+        '25+': 92.73
+    },
+    'Stardream citrine, 285 г/м': {
+        '1': 140,
+        '2-4': 127.3,
+        '5-14': 120.8,
+        '15-24': 114.55,
+        '25+': 108.18
+    },
+    'Flora avorio, 350 г/м': {
+        '1': 100,
+        '2-4': 90.9,
+        '5-14': 86.36,
+        '15-24': 81.82,
+        '25+': 77.27
+    },
+    'Tintoretto gesso, 300 г/м': {
+        '1': 100,
+        '2-4': 90.9,
+        '5-14': 86.36,
+        '15-24': 81.82,
+        '25+': 77.27
+    },
+    'Sirio pearl aurum, 300 г/м': {
+        '1': 160,
+        '2-4': 145.45,
+        '5-14': 138.18,
+        '15-24': 130.91,
+        '25+': 123.64
+    },
+    'Icelite 2s Toile moyenne, 300-335 г/м': {
+        '1': 100,
+        '2-4': 90.9,
+        '5-14': 86.36,
+        '15-24': 81.82,
+        '25+': 77.27
+    },
+    'SplendorGel avorio 300 г/м': {
+        '1': 100,
+        '2-4': 90.9,
+        '5-14': 86.36,
+        '15-24': 81.82,
+        '25+': 77.27
+    },
+    'Sirio white white 350 г/м': {
+        '1': 110,
+        '2-4': 100,
+        '5-14': 95,
+        '15-24': 90,
+        '25+': 85
+    },
+    'GSK Калька EW, 200': {
+        '1': 120,
+        '2-4': 109.1,
+        '5-14': 103.64,
+        '15-24': 98.18,
+        '25+': 92.73
+    }
 };
 
-// Множники для типів друку
-const PRINT_MULTIPLIERS = {
-    '4+0': 1.0,      // односторонній
-    '4+4': 1.5       // двосторонній
+// Ціни для крейдованого паперу А3 297х420мм (4+0)
+const COATED_A3_PRICES = {
+    'Крейдований 130г': {
+        '1-4': 36,
+        '5-14': 30.23,
+        '15-24': 26.63,
+        '25-49': 23.03,
+        '50-149': 20.15,
+        '150-499': 17.28,
+        '500-1499': 14.4,
+        '1500+': 11.51
+    },
+    'Крейдований 200г': {
+        '1-4': 44,
+        '5-14': 36.96,
+        '15-24': 32.56,
+        '25-49': 28.16,
+        '50-149': 24.64,
+        '150-499': 21.1,
+        '500-1499': 17.6,
+        '1500+': 14.08
+    },
+    'Крейдований 300г': {
+        '1-4': 54,
+        '5-14': 45.36,
+        '15-24': 39.96,
+        '25-49': 34.56,
+        '50-149': 30.24,
+        '150-499': 25.91,
+        '500-1499': 21.6,
+        '1500+': 17.28
+    },
+    'ОФСЕТНИЙ ПАПІР 160': {
+        '1-4': 43,
+        '5-14': 40.32,
+        '15-24': 35.52,
+        '25-49': 30.72,
+        '50-149': 26.88,
+        '150-499': 23.04,
+        '500-1499': 19.2,
+        '1500+': 15.36
+    },
+    'ОФСЕТНИЙ ПАПІР, 300': {
+        '1-4': 70,
+        '5-14': 58.8,
+        '15-24': 51.8,
+        '25-49': 44.79,
+        '50-149': 39.2,
+        '150-499': 33.6,
+        '500-1499': 28,
+        '1500+': 22.4
+    }
 };
 
-// Множники для тиражу (чим більше - тим дешевше)
-const TIRAGE_MULTIPLIERS = {
-    1: 1.0,
-    10: 0.95,
-    50: 0.85,
-    100: 0.75,
-    500: 0.65,
-    1000: 0.55,
-    5000: 0.45
+// Ціни для друку на звороті (4+4) А3 297х420мм
+const COATED_A3_4x4_PRICES = {
+    'Друк на звороті (4+4)': {
+        '1-4': 18,
+        '5-14': 15.12,
+        '15-24': 13.32,
+        '25-49': 11.52,
+        '50-149': 10.08,
+        '150-499': 8.64,
+        '500-1499': 7.2,
+        '1500+': 5.76
+    }
 };
 
 // ==================== INITIALIZATION ====================
 
 $(document).ready(function() {
-    // Слухачі змін
     setupEventListeners();
     
-    // Обробка вибору формату
     $('#format').on('change', function() {
         handleFormatChange();
     });
 
-    // Обробка змін щільності паперу
-    $('#paperDensity').on('change', function() {
-        validateDensityWithPaperType();
-    });
-
-    // Скидання формити
     $('#calculatorForm').on('reset', function() {
-        $('#resultsSection').slideUp(300);
+        $('#resultsSection').hide();
     });
 });
 
 // ==================== EVENT LISTENERS ====================
 
 function setupEventListeners() {
-    // Кнопка розрахунку
     $('#calculateBtn').on('click', function(e) {
         e.preventDefault();
         
-        // Валідація
         if (!validateForm()) {
             return;
         }
 
-        // Розрахунок
         const result = calculatePrice();
-        
-        // Відображення результатів
         displayResults(result);
-    });
-
-    // Слухач зміни паперу для автоматичної щільності
-    $('#paperType').on('change', function() {
-        updateDensityByPaperType();
-    });
-
-    // Слухач зміни розмірів при власному розмірі
-    $('#customWidth, #customHeight').on('change', function() {
-        if ($('#format').val() === 'custom') {
-            validateCustomSize();
-        }
     });
 }
 
@@ -104,106 +211,70 @@ function handleFormatChange() {
     const customContainer = $('#customSizeContainer');
 
     if (format === 'custom') {
-        customContainer.slideDown(300);
-        // Встановити мінімальні значення
+        customContainer.show();
         $('#customWidth').val('40');
         $('#customHeight').val('40');
     } else {
-        customContainer.slideUp(300);
+        customContainer.hide();
     }
-}
-
-function validateCustomSize() {
-    const width = parseInt($('#customWidth').val()) || 0;
-    const height = parseInt($('#customHeight').val()) || 0;
-
-    if (width < 40 || height < 40) {
-        showAlert('Мінімальний розмір: 40x40мм', 'warning');
-        return false;
-    }
-
-    if (width > 420 || height > 420) {
-        showAlert('Максимальний розмір: 420x420мм', 'warning');
-        return false;
-    }
-
-    return true;
-}
-
-// ==================== PAPER TYPE & DENSITY ====================
-
-function updateDensityByPaperType() {
-    const paperType = $('#paperType').val();
-    const densitySelect = $('#paperDensity');
-    
-    // Встановити відповідну щільність на основі типу паперу
-    let density = '80';
-
-    if (paperType.includes('offset160')) density = '160';
-    else if (paperType.includes('offset300')) density = '300';
-    else if (paperType.includes('coated130')) density = '130';
-    else if (paperType.includes('coated200')) density = '200';
-    else if (paperType.includes('coated300')) density = '300';
-    else if (paperType.includes('designer')) {
-        // Для дизайнерського паперу беремо щільність з опції
-        const option = $(`#paperType option[value="${paperType}"]`).text();
-        const match = option.match(/(\d+)\s*г\/м²/);
-        if (match) density = match[1];
-    }
-
-    densitySelect.val(density);
-}
-
-function validateDensityWithPaperType() {
-    // Перевірка сумісності щільності з типом паперу
-    return true; // Всі комбінації дозволені
 }
 
 // ==================== VALIDATION ====================
 
 function validateForm() {
-    const format = $('#format').val();
     const paperType = $('#paperType').val();
-    const paperDensity = $('#paperDensity').val();
     const printType = $('#printType').val();
     const tirage = parseInt($('#tirage').val()) || 0;
     const kits = parseInt($('#kits').val()) || 1;
 
-    if (!format) {
-        showAlert('Будь ласка, виберіть формат', 'error');
-        return false;
-    }
-
-    if (format === 'custom') {
-        if (!validateCustomSize()) return false;
-    }
-
     if (!paperType) {
-        showAlert('Будь ласка, виберіть папір', 'error');
-        return false;
-    }
-
-    if (!paperDensity) {
-        showAlert('Будь ласка, виберіть щільність паперу', 'error');
+        alert('Будь ласка, виберіть папір');
         return false;
     }
 
     if (!printType) {
-        showAlert('Будь ласка, виберіть тип друку', 'error');
+        alert('Будь ласка, виберіть тип друку');
         return false;
     }
 
     if (tirage < 1) {
-        showAlert('Тираж повинен бути не менше 1', 'error');
+        alert('Тираж повинен бути не менше 1');
         return false;
     }
 
     if (kits < 1) {
-        showAlert('Кількість комплектів повинна бути не менше 1', 'error');
+        alert('Кількість комплектів повинна бути не менше 1');
         return false;
     }
 
     return true;
+}
+
+// ==================== PRICE RETRIEVAL ====================
+
+function getPriceByTirage(prices, tirage) {
+    for (const range in prices) {
+        const parts = range.split('-');
+        const min = parseInt(parts[0]);
+        const max = parts[1] ? parseInt(parts[1]) : Infinity;
+        
+        if (tirage >= min && tirage <= max) {
+            return prices[range];
+        }
+    }
+    return null;
+}
+
+function getPriceByComplexRange(prices, quantity) {
+    // Для дизайнерського паперу
+    if (prices['1'] !== undefined) {
+        if (quantity === 1) return prices['1'];
+        if (quantity >= 2 && quantity <= 4) return prices['2-4'];
+        if (quantity >= 5 && quantity <= 14) return prices['5-14'];
+        if (quantity >= 15 && quantity <= 24) return prices['15-24'];
+        if (quantity >= 25) return prices['25+'];
+    }
+    return null;
 }
 
 // ==================== PRICE CALCULATION ====================
@@ -215,57 +286,54 @@ function calculatePrice() {
     const tirage = parseInt($('#tirage').val());
     const kits = parseInt($('#kits').val());
 
-    // 1. Отримати розміри
-    let width, height;
-    if (format === 'custom') {
-        width = parseInt($('#customWidth').val());
-        height = parseInt($('#customHeight').val());
-    } else {
-        const formatInfo = FORMATS[format];
-        width = formatInfo.width;
-        height = formatInfo.height;
+    let pricePerUnit = 0;
+
+    // Офсетний папір 80г - таблиця цін
+    if (paperType === 'offset80') {
+        const prices = OFFSET_80_PRICES;
+        const priceData = getPriceByTirage(prices, tirage);
+        if (priceData) {
+            pricePerUnit = priceData[printType] || 0;
+        }
+    }
+    
+    // Крейдований папір та офсетний А3 (4+0)
+    else if (paperType.includes('coated_a3') && printType === '4+0') {
+        const paperName = $('#paperType option:selected').text();
+        if (COATED_A3_PRICES[paperName]) {
+            pricePerUnit = getPriceByTirage(COATED_A3_PRICES[paperName], tirage) || 0;
+        }
+    }
+    
+    // Друк на звороті (4+4) А3
+    else if (printType === '4+4' && format === 'a3') {
+        const priceData = getPriceByTirage(COATED_A3_4x4_PRICES['Друк на звороті (4+4)'], tirage);
+        if (priceData) {
+            pricePerUnit = priceData;
+        }
+    }
+    
+    // Дизайнерський папір 297х420
+    else if (paperType.startsWith('designer_')) {
+        const paperName = $('#paperType option:selected').text();
+        if (DESIGNER_297x420_PRICES[paperName]) {
+            pricePerUnit = getPriceByComplexRange(DESIGNER_297x420_PRICES[paperName], tirage) || 0;
+        }
     }
 
-    // 2. Розрахувати площу в м²
-    const areaMm2 = width * height;
-    const areaM2 = areaMm2 / 1_000_000;
+    const totalCostPerKit = pricePerUnit * tirage;
+    const totalCost = totalCostPerKit * kits;
+    const pricePerKit = totalCostPerKit;
 
-    // 3. Отримати базову ціну за м²
-    const basePricePerM2 = BASE_PRICES[paperType] || 50;
-
-    // 4. Розрахувати ціну за один лист
-    const pricePerSheet = basePricePerM2 * areaM2;
-
-    // 5. Застосувати множник типу друку
-    const printMultiplier = PRINT_MULTIPLIERS[printType] || 1.0;
-    const pricePerSheetWithPrint = pricePerSheet * printMultiplier;
-
-    // 6. Застосувати множник тиражу
-    const tirageMultiplier = getTirageMultiplier(tirage);
-    const pricePerSheetWithTirage = pricePerSheetWithPrint * tirageMultiplier;
-
-    // 7. Розрахувати загальну вартість
-    const totalCostBeforeKits = pricePerSheetWithTirage * tirage;
-    const totalCost = totalCostBeforeKits * kits;
-
-    // 8. Вивести результати
     return {
-        width,
-        height,
-        areaMm2,
-        areaM2,
-        basePricePerM2,
-        pricePerSheet,
-        printMultiplier,
-        tirageMultiplier,
-        pricePerSheetWithTirage,
-        totalCostBeforeKits,
+        pricePerUnit,
+        pricePerKit,
         totalCost,
         tirage,
         kits,
-        printType,
         paperType,
-        format
+        format,
+        printType
     };
 }
 
@@ -283,33 +351,41 @@ function getTirageMultiplier(tirage) {
 // ==================== DISPLAY RESULTS ====================
 
 function displayResults(result) {
-    const unitCost = result.totalCost / (result.tirage * result.kits);
-    
-    $('#totalCost').text(formatCurrency(result.totalCost));
-    $('#unitCost').text(formatCurrency(unitCost));
+    const unitCost = result.pricePerUnit;
+    const kitCost = result.pricePerKit;
+    const totalCost = result.totalCost;
+
+    $('#unitPrice').text(formatCurrency(unitCost));
+    $('#totalPrice').text(formatCurrency(totalCost));
+
+    // Показати ціну за комплект якщо комплектів більше 1
+    const kitPriceRow = $('#kitPriceRow');
+    if (result.kits > 1) {
+        $('#kitPrice').text(formatCurrency(kitCost));
+        kitPriceRow.show();
+    } else {
+        kitPriceRow.hide();
+    }
 
     // Деталі розрахунку
-    const details = `
+    let details = `
         <strong>Параметри:</strong><br>
-        Формат: ${FORMATS[result.format].name} (${result.width}×${result.height}мм)<br>
-        Площа: ${result.areaM2.toFixed(4)}м²<br>
+        Тип паперу: ${$('#paperType option:selected').text()}<br>
         Тип друку: ${result.printType}<br>
-        Базова ціна паперу: ${formatCurrency(result.basePricePerM2)}/м²<br>
+        Кількість листів: ${result.tirage} шт.<br>
+        Кількість комплектів: ${result.kits}<br>
         <br>
         <strong>Розрахунок:</strong><br>
-        Ціна за лист: ${formatCurrency(result.pricePerSheet)}<br>
-        Множник друку (${result.printType}): ×${result.printMultiplier.toFixed(2)}<br>
-        Множник тиражу (${result.tirage} шт.): ×${result.tirageMultiplier.toFixed(2)}<br>
-        Ціна за лист з урахуванням: ${formatCurrency(result.pricePerSheetWithTirage)}<br>
-        <br>
-        <strong>Кінцевий результат:</strong><br>
-        Всього листів: ${result.tirage} × ${result.kits} комплектів = ${result.tirage * result.kits} шт.<br>
-        Загальна вартість: ${formatCurrency(result.totalCost)}<br>
-        Ціна за одиницю: ${formatCurrency(unitCost)}
+        Ціна за один лист: ${formatCurrency(unitCost)}<br>
+        Вартість за комплект (${result.tirage} листів): ${formatCurrency(kitCost)}<br>
     `;
 
+    if (result.kits > 1) {
+        details += `Вартість ${result.kits} комплектів: ${formatCurrency(totalCost)}`;
+    }
+
     $('#calculationDetails').html(details);
-    $('#resultsSection').slideDown(300);
+    $('#resultsSection').show();
 }
 
 // ==================== HELPERS ====================
@@ -322,62 +398,9 @@ function formatCurrency(value) {
 }
 
 function showAlert(message, type = 'info') {
-    // Простий alert або можна використовувати Bootstrap Toast
     alert(message);
-    
-    // Альтернатива з Bootstrap (якщо потрібно):
-    // const alertClass = `alert-${type}`;
-    // const alertHtml = `<div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-    //     ${message}
-    //     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    // </div>`;
-    // $(alertHtml).insertBefore('#calculatorForm');
 }
 
-// ==================== THEME MANAGEMENT ====================
-
-const THEMES = ['blue', 'green', 'purple', 'orange', 'red', 'teal', 'dark'];
-let currentThemeIndex = 0;
-
-function initializeTheme() {
-    // Завантажити збережену тему з localStorage
-    const savedTheme = localStorage.getItem('calculatorTheme') || 'theme-blue';
-    $('body').removeClass(THEMES.map(t => `theme-${t}`).join(' '));
-    $('body').addClass(savedTheme);
-    
-    // Встановити індекс поточної теми
-    const themeName = savedTheme.replace('theme-', '');
-    currentThemeIndex = THEMES.indexOf(themeName);
+function updateDensityByPaperType() {
+    // Автоматичне оновлення вибору паперу
 }
-
-function changeTheme() {
-    // Перейти на наступну тему
-    currentThemeIndex = (currentThemeIndex + 1) % THEMES.length;
-    const newTheme = `theme-${THEMES[currentThemeIndex]}`;
-    
-    // Видалити всі класи тем
-    $('body').removeClass(THEMES.map(t => `theme-${t}`).join(' '));
-    
-    // Додати новий клас теми
-    $('body').addClass(newTheme);
-    
-    // Зберегти вибір у localStorage
-    localStorage.setItem('calculatorTheme', newTheme);
-}
-
-// ==================== EVENT LISTENERS FOR THEME ====================
-
-$(document).ready(function() {
-    // Ініціалізувати тему при завантаженні
-    initializeTheme();
-    
-    // Обробник кнопки зміни кольору
-    $('#colorToggleBtn').on('click', function() {
-        changeTheme();
-        // Додати невеликий ефект обертання
-        $(this).css('transform', 'rotate(360deg)').css('transition', 'transform 0.5s ease');
-        setTimeout(() => {
-            $(this).css('transform', 'rotate(0deg)');
-        }, 500);
-    });
-});
